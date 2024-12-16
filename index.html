@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNAP</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <style>
+        /* Reset and Body */
+        body, html {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex; /* Flexbox for horizontal layout */
+            align-items: center; /* Vertically align items */
+            justify-content: space-between; /* Space between left and right sections */
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for nav */
+        }
+
+        /* Left Section (Logo and Nav Links) */
+        .left-nav {
+            display: flex; /* Group logo and nav links horizontally */
+            align-items: center;
+            gap: 20px; /* Spacing between logo and nav links */
+        }
+
+        /* Logo Styling */
+        .left-nav .logo img {
+            height: 40px;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex; /* Horizontal layout for links */
+            margin: 0;
+            padding: 0;
+            gap: 15px; /* Spacing between links */
+        }
+
+        .nav-links li {
+            position: relative; /* For dropdown positioning */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Dropdown Arrow */
+        .nav-links li.dropdown a::after {
+            content: none; /* Use your custom arrow image */
+            margin-left: 8px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Position below parent */
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block; /* Show dropdown on hover */
+        }
+
+        /* Auth Buttons (Login/Register) */
+        .auth-buttons {
+            display: flex; /* Align buttons in a row */
+            gap: 15px; /* Spacing between buttons */
+        }
+
+        .auth-buttons button {
+            all: unset; /* Remove default button styles */
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+        }
+        .auth-buttons .register-btn { /* Apply specific styles to the Register button */
+            all: unset;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            padding: 5px 15px; /* Add padding for a better look */
+            border: 2px solid #333; /* Add border around the Register button */
+            border-radius: 5px; /* Optional: rounded corners */
+        }
+
+        .auth-buttons .register-btn:hover {
+            background-color: #f0f0f0; /* Optional: subtle background on hover */
+        }
+
+        .auth-buttons button:hover {
+            text-decoration: underline; /* Optional hover effect */
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center; /* Vertically center the content */
+            justify-content: space-between; /* Align the content to the left */
+            height: 80vh; /* Full viewport height */
+            margin-top: 50px;
+        }
+
+        .hero-image {
+            height: 50%; /* Full height */
+            width: 35%; /* Adjust width as necessary */
+            right: 5%;
+            bottom: 20%;
+            position: fixed;
+        }
+
+        .hero-text {
+            width: 65%; /* Adjust width as necessary */
+            padding-left: 20px; /* Add some padding to space the text from the edge */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the text */
+            color: black;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin: 0; /* Remove default margin */
+            padding: 10px 0; /* Optional: add space between text lines */
+            font-weight: bold;
+        }
+        
+        .hero-text p {
+            font-size: 18px;
+            margin: 0;
+            padding: 10px 0;
+        }
+        /* Button Styling */
+        .hero-text button {
+            padding: 10px 20px; /* Smaller padding for a smaller button */
+            font-size: 14px; /* Smaller font size */
+            color: white;
+            border-radius: 5px; /* Rounded corners */
+            border: 2px solid #333; /* Border for button */
+            background-color: black; /* Transparent background */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 150px;
+        }
+
+        .hero-text button:hover {
+            background-color: #f0f0f0; /* Subtle background on hover */
+        }
+        
+        /* Image Gallery */
+        .image-gallery {
+            display: flex; /* Arrange images in a row */
+            justify-content: space-between; /* Space out the images */
+            gap: 20px; /* Optional: Adjust the gap between images */
+            margin-top: 30px; /* Space between hero section and images */
+            flex-wrap: wrap; /* Allows images to wrap if the screen is narrow */
+        }
+
+        .image-gallery {
+            width: 50%; /* Adjust the width as necessary */
+            height: auto;
+            position: fixed;
+            bottom: 5%;
+            /* border-radius: 5px; /* Optional: rounded corners for the images */
+            /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); Optional: subtle shadow */
+        }
+
+        /* Optional: For better spacing in small screens */
+        @media (max-width: 768px) {
+            .image-gallery img {
+                width: 48%; /* For smaller screens, adjust to fit 2 per row */
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <nav>
+        <!-- Left Section: Logo and Nav Links -->
+        <div class="left-nav">
+            <div class="logo">
+                <img src="assets/logo.svg" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#Features">Features <img src="assets/icon-arrow-down.svg" alt="Arrow Down" class="dropdown-arrow"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><img src="assets/icon-todo.svg">Todo List</a></li>
+                        <li><a href="#"><img src="assets/icon-calendar.svg">Calendar</a></li>
+                        <li><a href="#"><img src="assets/icon-reminders.svg">Reminders</a></li>
+                        <li><a href="#"><img src="assets/icon-planning.svg">Planning</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#Company">Company <img src="assets/icon-arrow-down.svg" alt="Arrow Down" class="dropdown-arrow"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Careers">Careers</a></li>
+                <li><a href="#About">About</a></li>
+            </ul>
+        </div>
+    
+        <!-- Right Section: Auth Buttons -->
+        <div class="auth-buttons">
+            <button class="login-btn">Login</button>
+            <button class="register-btn">Register</button>
+        </div>
+    </nav>
+    
+    <div class="hero-container">
+    
+        <div class="hero-text">
+            <h1>Make remote work</h1>
+            <p>Get your team in sync, no matter your location.<br>Streamline processes , create team rituals , and watchproductivity soar. </p>
+            <button>Learn more</button>
+        </div>
+        <div >
+            <img class="hero-image" src="./assets/image-hero-desktop.png">
+        </div>
+    </div>
+    <div class="image-gallery" >
+        <img class="image-i" src="./assets/client-databiz.svg">  
+        <img class="image-i" src="./assets/client-audiophile.svg">
+        <img class="image-i" src="./assets/client-meet.svg">
+        <img class="image-i" src="./assets/client-maker.svg"></div>
+    
+    
+      
+    
+</body>
+</html>
