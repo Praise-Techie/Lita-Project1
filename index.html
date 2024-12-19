@@ -10,51 +10,56 @@
         body, html {
             margin: 0;
             font-family: Arial, sans-serif;
+            color: hsl(0, 0%, 98%);
         }
 
         /* Navigation Bar */
         nav {
-            display: flex; /* Flexbox for horizontal layout */
-            align-items: center; /* Vertically align items */
-            justify-content: space-between; /* Space between left and right sections */
-            padding: 10px 20px;
-            background-color: #fff;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for nav */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2em 2em;
+            background-color: hsl(0, 0%, 98%);
+            position: relative;
         }
 
         /* Left Section (Logo and Nav Links) */
         .left-nav {
-            display: flex; /* Group logo and nav links horizontally */
+            display: flex;
             align-items: center;
-            gap: 20px; /* Spacing between logo and nav links */
+            gap: 20px;
         }
 
         /* Logo Styling */
         .left-nav .logo img {
-            height: 40px;
+            display: flex;
+            align-items: center;
         }
 
         /* Navigation Links */
         .nav-links {
             list-style: none;
-            display: flex; /* Horizontal layout for links */
-            margin: 0;
-            padding: 0;
-            gap: 15px; /* Spacing between links */
+            display: flex;
+            gap: 2em;
         }
 
         .nav-links li {
-            position: relative; /* For dropdown positioning */
+            position: relative;
+            color: hsl(0, 0%, 41%);
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: hsl(0, 0%, 41%);
             font-size: 16px;
             font-weight: 500;
         }
 
-        /* Dropdown Arrow */
+        .nav-links a:hover {
+            color: hsl(0, 0%, 8%);
+        }
+
+        * Dropdown Arrow */
         .nav-links li.dropdown a::after {
             content: none; /* Use your custom arrow image */
             margin-left: 8px;
@@ -66,12 +71,38 @@
             position: absolute;
             top: 100%; /* Position below parent */
             left: 0;
-            background-color: #fff;
+            background-color: white;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
             padding: 10px 0;
+            list-style: none;
         }
 
+        /* Individual List Items */
+        .dropdown-menu li {
+            display: flex; /* Align image and text horizontally */
+            align-items: center; /* Vertically center image and text */
+            gap: 10px; /* Add space between image and text */
+            padding: 5px 15px; /* Add padding for spacing */
+            white-space: nowrap;
+
+        }
+
+        /* Images in List Items */
+        .dropdown-menu li img {
+            width: 20px; /* Adjust width for images */
+            height: 20px; /* Adjust height for images */
+            object-fit: contain; /* Ensure the image maintains aspect ratio */
+            margin-right: 10px;
+        }
+
+        /* Text Links in Dropdown */
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: #333; /* Default text color */
+            font-size: 16px; /* Font size for the text */
+            font-weight: 500; /* Adjust font weight */
+        }
         .dropdown:hover .dropdown-menu {
             display: block; /* Show dropdown on hover */
         }
@@ -80,120 +111,249 @@
         .auth-buttons {
             display: flex; /* Align buttons in a row */
             gap: 15px; /* Spacing between buttons */
+            padding-left: 50%;
         }
+
+        
 
         .auth-buttons button {
-            all: unset; /* Remove default button styles */
-            font-size: 16px;
-            color: #333;
-            cursor: pointer;
-        }
-        .auth-buttons .register-btn { /* Apply specific styles to the Register button */
             all: unset;
             font-size: 16px;
-            color: #333;
+            color: hsl(0, 0%, 41%);
             cursor: pointer;
-            padding: 5px 15px; /* Add padding for a better look */
-            border: 2px solid #333; /* Add border around the Register button */
-            border-radius: 5px; /* Optional: rounded corners */
         }
 
+        
+        .auth-buttons .register-btn {
+            padding: 5px 15px;
+            color: hsl(0, 0%, 41%);
+            border: 2px solid hsl(0, 0%, 41%);
+            border-radius: 12px;
+        }
+        
         .auth-buttons .register-btn:hover {
-            background-color: #f0f0f0; /* Optional: subtle background on hover */
+            color: hsl(0, 0%, 8%);
         }
 
-        .auth-buttons button:hover {
-            text-decoration: underline; /* Optional hover effect */
+        .auth-buttons .login-btn:hover {
+            color: hsl(0, 0%, 8%);
+        } 
+        .hero-text button {
+        padding: 10px 20px; /* Smaller padding for a smaller button */
+        font-size: 14px; /* Smaller font size */
+        color: white;
+        border-radius: 10px; /* Rounded corners */
+        border: 2px solid #333; /* Border for button */
+        background-color: black; /* Transparent background */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: fit-content;
+    
         }
 
+        .hero-text button:hover {
+            background-color: #fff; 
+            color: black;
+        }
+
+        /* Hero Container */
         .hero-container {
             display: flex;
-            align-items: center; /* Vertically center the content */
-            justify-content: space-between; /* Align the content to the left */
-            height: 80vh; /* Full viewport height */
+            align-items: center;
+            justify-content: space-between;
+            
             margin-top: 50px;
         }
 
         .hero-image {
-            height: 50%; /* Full height */
-            width: 35%; /* Adjust width as necessary */
-            right: 5%;
-            bottom: 20%;
-            position: fixed;
+            height: 50%;
+            width: 30%;
+            position: absolute;
+            
+            right: 10%;
+            top: 15%;
+        }
+
+        .hero-image img {
+            width: 100%;
         }
 
         .hero-text {
-            width: 65%; /* Adjust width as necessary */
-            padding-left: 20px; /* Add some padding to space the text from the edge */
+            width: 40%;
+            padding-left: 10em;            
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically center the text */
+            gap: 2em;
+            justify-content: center;
             color: black;
         }
 
         .hero-text h1 {
-            font-size: 48px;
-            margin: 0; /* Remove default margin */
-            padding: 10px 0; /* Optional: add space between text lines */
+            font-size: 90px;
+            margin: 0;
             font-weight: bold;
+            padding-right: 1.5em;
         }
-        
+
         .hero-text p {
             font-size: 18px;
             margin: 0;
-            padding: 10px 0;
-        }
-        /* Button Styling */
-        .hero-text button {
-            padding: 10px 20px; /* Smaller padding for a smaller button */
-            font-size: 14px; /* Smaller font size */
-            color: white;
-            border-radius: 5px; /* Rounded corners */
-            border: 2px solid #333; /* Border for button */
-            background-color: black; /* Transparent background */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            max-width: 150px;
+            padding-right: 20em;
+            line-height: 1.5em;
+            color: hsl(0, 0%, 41%);
         }
 
-        .hero-text button:hover {
-            background-color: #f0f0f0; /* Subtle background on hover */
-        }
-        
         /* Image Gallery */
         .image-gallery {
-            display: flex; /* Arrange images in a row */
-            justify-content: space-between; /* Space out the images */
-            gap: 20px; /* Optional: Adjust the gap between images */
-            margin-top: 30px; /* Space between hero section and images */
-            flex-wrap: wrap; /* Allows images to wrap if the screen is narrow */
+            display: flex;            
+            gap: 10em;
+            margin-top: 10em;
+            
         }
 
-        .image-gallery {
-            width: 50%; /* Adjust the width as necessary */
-            height: auto;
-            position: fixed;
-            bottom: 5%;
-            /* border-radius: 5px; /* Optional: rounded corners for the images */
-            /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); Optional: subtle shadow */
+        /* Hamburger Icon */
+        .hamburger , .cancel {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
         }
 
-        /* Optional: For better spacing in small screens */
-        @media (max-width: 768px) {
-            .image-gallery img {
-                width: 48%; /* For smaller screens, adjust to fit 2 per row */
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: #333;
+        }
+
+        
+
+        /* Mobile View */
+        @media screen and (max-width: 375px) {
+            
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 50%;
+                background-color: hsl(0, 0%, 98%);
+                position: fixed;
+                top: 0;
+                left: 20%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
             }
+            .auth-buttons {
+                display: none;
+                flex-direction: column;
+            }
+
+            .auth-buttons.active {
+                display: flex;
+            } 
+            .nav-links.active {
+                display: flex;
+            }    
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            /* .hamburger {
+                display: flex;
+            } */
+
+            /* Menu Icons */
+            .menu-icons {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+
+            
+            .hamburger, .cancel {
+                width: 30px;
+                height: 30px;
+                display: none; /* Hide by default */
+            }
+
+            /* Hamburger icon shown by default */
+            .hamburger {
+                display: block;
+            }
+
+            /* When menu is active, show cancel button */
+            .menu-icons.active .hamburger {
+                display: none; /* Hide hamburger when cancel button is active */
+            }
+
+            .menu-icons.active .cancel {
+                display: block; /* Show cancel button */
+                
+            }
+
+            
+            .hero-image {
+                position: absolute;
+                left: 10%;
+                width: 100%;
+            }
+
+            .hero-image img {
+                width: 80%;
+            }
+
+            .hero-text {
+                width: 100%;
+                text-align: center;
+                padding: 0px;
+                margin-top: 25em;
+            }    
+
+            
+
+            .hero-text h1 {
+                font-size: 35px;
+                text-align: center;
+                
+                               
+            }
+            .hero-text p {
+                font-size: 16px;
+                text-align: center;
+                padding: 0px;
+            }
+            .hero-text button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 10em;
+            }
+            .image-gallery {
+                margin: 10px;
+                display: flex;
+                gap: 3em;
+                
+            }
+
+            .image-gallery img {
+                width: 15%;
+            }
+
+
         }
-    </style>
     
+    </style>
 </head>
-<body>
+<body >
     <nav>
         <!-- Left Section: Logo and Nav Links -->
         <div class="left-nav">
             <div class="logo">
                 <img src="assets/logo.svg" alt="Logo">
             </div>
+            
             <ul class="nav-links">
                 <li class="dropdown">
                     <a href="#Features">Features <img src="assets/icon-arrow-down.svg" alt="Arrow Down" class="dropdown-arrow"></a>
@@ -216,33 +376,68 @@
                 <li><a href="#About">About</a></li>
             </ul>
         </div>
-    
+
         <!-- Right Section: Auth Buttons -->
         <div class="auth-buttons">
             <button class="login-btn">Login</button>
             <button class="register-btn">Register</button>
         </div>
+
+        
+        
+        <!-- Hamburger and cancel Icon for Mobile -->
+        <div class="menu-icons">
+            <img src="assets/icon-menu.svg" alt="Menu" class="hamburger">
+            <img src="assets/icon-close-menu.svg" alt="Close Menu" class="cancel">
+        </div>
+        
+        
+        
     </nav>
-    
+
     <div class="hero-container">
-    
         <div class="hero-text">
             <h1>Make remote work</h1>
-            <p>Get your team in sync, no matter your location.<br>Streamline processes , create team rituals , and watchproductivity soar. </p>
+            <p>Get your team in sync, no matter your location. Streamline processes , create team rituals , and watch productivity soar. </p>
             <button>Learn more</button>
+
+            <div class="image-gallery">
+                <img src="./assets/client-databiz.svg" alt="Client 1">
+                <img src="./assets/client-audiophile.svg" alt="Client 2">
+                <img src="./assets/client-meet.svg" alt="Client 3">
+                <img src="./assets/client-maker.svg" alt="Client 4">
+            </div>
         </div>
-        <div >
-            <img class="hero-image" src="./assets/image-hero-desktop.png">
+        <div class="hero-image">
+            <img src="./assets/image-hero-desktop.png" alt="Mobile Hero Image">
         </div>
     </div>
-    <div class="image-gallery" >
-        <img class="image-i" src="./assets/client-databiz.svg">  
-        <img class="image-i" src="./assets/client-audiophile.svg">
-        <img class="image-i" src="./assets/client-meet.svg">
-        <img class="image-i" src="./assets/client-maker.svg"></div>
+
     
-    
-      
-    
+
+    <!-- <script>
+        // Toggle the navigation menu on mobile view
+        function toggleNav() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.body.style.overflow = document.querySelector('.nav-links').classList.contains('active') ? 'hidden' : 'auto';
+        }
+    </script> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const menuIcons = document.querySelector('.menu-icons');
+        const navLinks = document.querySelector('.nav-links');
+        const authButtons = document.querySelector('auth-buttons');
+
+        // Toggle menu on click
+        menuIcons.addEventListener('click', function () {
+            menuIcons.classList.toggle('active'); // Toggle icons
+            navLinks.classList.toggle('active'); // Toggle menu visibility
+            authButtons.classList.toggle('active');
+
+        });
+    });
+
+    </script>
 </body>
 </html>
